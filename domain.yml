@@ -1,0 +1,47 @@
+version: '3.1'
+intents:
+- affirm
+- bot_challenge
+- deny
+- goodbye
+- greet
+- mood_great
+- mood_unhappy
+- faq
+
+entities:
+- name
+
+slots:
+  name:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: name
+
+responses:
+  utter_greet:
+  - text: Hey {name}, I am your healthcare assistant! How can I help you?
+  - text: Hello {name}, How can I help you?
+  - text: Hello, How can I help you?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I'm a virtual assistant here to assist with your questions.
+  utter_faq/ask_about_wipdarasata:
+  - text: The wipdata is a Malayasian based tech company mostly work on Artificial intelligence and data automation.
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+- utter_faq
+- utter_greet
