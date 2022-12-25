@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'wipdataAiBotBrain'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BAA26362023C4059B5D0CD89C309D5FB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0F7E6210D11B4DD8ACF935BAE3602DFC }}
