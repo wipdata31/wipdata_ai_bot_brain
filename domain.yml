@@ -1,38 +1,111 @@
 version: '3.1'
 intents:
 - affirm
+- appointment
 - bot_challenge
 - deny
+- faq_ask_about_wipdata
+- form_deny
 - goodbye
 - greet
-- mood_great
-- mood_unhappy
-- faq_ask_about_wipdata
-
+- procedure_cost_estimate
+- nlu_fallback
+- prescription_refills
+- tell_age
+- tell_symptom
+- tell_mobile
+- tell_name
+- tell_update_slot
+- update_slot
 entities:
+- mobile
 - name
-
+- age
+- symptom
+- slot
 slots:
   name:
-    type: any
+    type: text
     mappings:
     - type: from_entity
       entity: name
-
+  mobile:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: mobile
+  age:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: age
+  symptom:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: symptom
+  slot:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: slot
 responses:
+  utter_ask_update_slot:
+  - text: Which information do you want to change?
+  utter_ask_name:
+  - text: Hi, Hope you are having a good day. Could we start with your name please?
   utter_greet:
   - text: Hey {name}, I am your healthcare assistant! How can I help you?
-  - text: Hello {name}, How can I help you?
-  - text: Hello, How can I help you?
-  utter_cheer_up:
-  - text: 'Here is something to cheer you up:'
-    image: https://i.imgur.com/nGF1K8f.jpg
-  utter_did_that_help:
-  - text: Did that help you?
-  utter_happy:
-  - text: Great, carry on!
+    buttons:
+    - title: Make an appointment
+      payload: /appointment
+    - title: Procedure cost estimate
+      payload: /procedure_cost_estimate
+    - title: Prescription refills
+      payload: /prescription_refills
+  - text: Hello {name}, I am ACEVA a healthcare assistant! How can I help you?
+    buttons:
+    - title: Make an appointment
+      payload: /appointment
+    - title: Procedure cost estimate
+      payload: /procedure_cost_estimate
+    - title: Prescription refills
+      payload: /prescription_refills
+  - text: Hi {name}, I am ACEVA your healthcare assistant! How can I help you?
+    buttons:
+    - title: Make an appointment
+      payload: /appointment
+    - title: Procedure cost estimate
+      payload: /procedure_cost_estimate
+    - title: Prescription refills
+      payload: /prescription_refills
+  utter_anything_else:
+  - text: How can I help you?
+    buttons:
+    - title: Make an appointment
+      payload: /appointment
+    - title: Procedure cost estimate
+      payload: /procedure_cost_estimate
+    - title: Prescription refills
+      payload: /prescription_refills
+  - text: Hello {name}, I am ACEVA a healthcare assistant! How can I help you?
+    buttons:
+    - title: Make an appointment
+      payload: /appointment
+    - title: Procedure cost estimate
+      payload: /procedure_cost_estimate
+    - title: Prescription refills
+      payload: /prescription_refills
+  - text: Hi {name}, I am ACEVA your healthcare assistant! How can I help you?
+    buttons:
+    - title: Make an appointment
+      payload: /appointment
+    - title: Procedure cost estimate
+      payload: /procedure_cost_estimate
+    - title: Prescription refills
+      payload: /prescription_refills
   utter_goodbye:
-  - text: Bye
+  - text: Have a nice day {name}!
   utter_iamabot:
   - text: I'm a virtual assistant here to assist with your questions.
   utter_ask_about_wipdata:
@@ -41,10 +114,35 @@ responses:
   - text: Sorry, I can't handle that request.
   utter_please_rephrase:
   - text: I'm sorry, I didn't quite understand that. Could you rephrase?
-
+  utter_ask_mobile:
+  - text: Please provide your mobile number.
+  utter_ask_age:
+  - text: What is your age?
+  utter_ask_symptom:
+  - text: What are your symptoms?
+  utter_slots_values:
+  - text: '{name} thanks for your informations. Your given informations are: mobile- {mobile}, age- {age} and your symptoms are {symptom}. Are these correct?'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
-
 actions:
+- action_update_slot
+- action_utter_ask_slot
+- action_utter_submit
+- utter_ask_age
+- utter_ask_symptom
+- utter_ask_name
+- utter_ask_update_slot
+- utter_goodbye
 - utter_greet
+- utter_please_rephrase
+- utter_slots_values
+- utter_anything_else
+forms:
+  appointment_form:
+    ignored_intents:
+    - tell_name
+    required_slots:
+    - mobile
+    - age
+    - symptom

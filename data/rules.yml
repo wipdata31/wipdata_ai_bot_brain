@@ -21,3 +21,7 @@ rules:
     steps:
     - intent: nlu_fallback
     - action: utter_please_rephrase
+  - rule: ask anything else fo helping
+    steps:
+    - intent: affirm
+    - action: utter_anything_else

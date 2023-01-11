@@ -2,31 +2,82 @@ version: "3.1"
 
 stories:
 
-- story: happy path
+- story: happy procedure cost estimate path
   steps:
   - intent: greet
+  - action: utter_ask_name
+  - intent: tell_name
     entities:
-    - name: buddy
+      - name: "buddy"
+  - slot_was_set:
+    - name: "man"      
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - intent: procedure_cost_estimate
+  - action: utter_slots_values
 
-- story: sad path 1
+- story: happy prescription refill path
   steps:
   - intent: greet
+  - action: utter_ask_name
+  - intent: tell_name
+    entities:
+      - name: "buddy"
+  - slot_was_set:
+    - name: "man"      
   - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
+  - intent: prescription_refills
+  - action: utter_slots_values
+
+
+- story: happy_appointment_path
+  steps:
+  - intent: greet
+  - action: utter_ask_name
+  - intent: tell_name
+    entities:
+    - name: Shinjo
+  - slot_was_set:
+    - name: Shinjo
+  - action: utter_greet
+  - intent: appointment
+  - action: appointment_form
+  - active_loop: appointment_form
+  - slot_was_set:
+    - requested_slot: mobile
+  - slot_was_set:
+    - mobile: '46377382'
+  - slot_was_set:
+    - requested_slot: age
+  - slot_was_set:
+    - age: '38'
+  - slot_was_set:
+    - requested_slot: symptom
+  - slot_was_set:
+    - symptom: Flue
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_slots_values
+  
+- story: happy_appointment_submit_path
+  steps:
   - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
+  - action: action_utter_submit
   - intent: deny
   - action: utter_goodbye
+  - action: action_restart
+
+- story: unhappy_appointment_submit_path
+  steps:
+  - intent: form_deny
+  - action: utter_ask_update_slot
+  - intent: update_slot
+    entities:
+    - slot: age
+  - slot_was_set:
+    - slot: age
+  - action: action_utter_ask_slot
+  - intent: tell_update_slot
+  - action: action_update_slot
+  - action: utter_slots_values
+
