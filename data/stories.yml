@@ -2,7 +2,7 @@ version: "3.1"
 
 stories:
 
-- story: happy procedure cost estimate path
+- story: greed path
   steps:
   - intent: greet
   - action: utter_ask_name
@@ -12,33 +12,102 @@ stories:
   - slot_was_set:
     - name: "man"      
   - action: utter_greet
-  - intent: procedure_cost_estimate
-  - action: utter_slots_values
+
+- story: happy procedure cost estimate path
+  steps:
+  - intent: procedure_cost_estimation
+  - action: action_utter_procedure
+  - intent: tell_procedure
+    entities:
+      - procedure: "SEIZURES"
+  - slot_was_set:
+    - procedure: "SEIZURES" 
+  - action: utter_procedurs_options 
+
+- story: happy_average_total_charge
+  steps:
+  - intent: average_total_charge
+  - action: action_utter_state
+  - intent: tell_state
+    entities:
+      - state: "AL"
+  - slot_was_set:
+    - state: "AL"
+  - action: action_utter_city
+  - intent: tell_city
+    entities:
+      - city: "city"
+  - slot_was_set:
+    - city: "city"
+  - action: action_utter_average_charge
+  - intent: affirm
+  - action: utter_procedurs_options
+
+- story: happy_average_medicare_charge
+  steps:
+  - intent: average_medicare_charge
+  - action: action_utter_state
+  - intent: tell_state
+    entities:
+      - state: "AL"
+  - slot_was_set:
+    - state: "AL"
+  - action: action_utter_city
+  - intent: tell_city
+    entities:
+      - city: "city"
+  - slot_was_set:
+    - city: "city"
+  - action: action_utter_average_medicare
+  - intent: affirm
+  - action: utter_procedurs_options
+
+- story: happy_cheaper_city
+  steps:
+  - intent: cheaper_city
+  - action: action_utter_state
+  - intent: tell_state
+    entities:
+      - state: "AL"
+  - slot_was_set:
+    - state: "AL"
+  - action: action_utter_cheaper_city   
+  - intent: affirm
+  - action: utter_procedurs_options
+
+- story: happy_cheaper_provider
+  steps:
+  - intent: cheaper_provider
+  - action: action_utter_state
+  - intent: tell_state
+    entities:
+      - state: "AL"
+  - slot_was_set:
+    - state: "AL"
+  - action: action_utter_city
+  - intent: tell_city
+    entities:
+      - city: "city"
+  - slot_was_set:
+    - city: "city"
+  - action: action_utter_cheaper_provider
+  - intent: affirm
+  - action: utter_procedurs_options  
+
 
 - story: happy prescription refill path
   steps:
-  - intent: greet
-  - action: utter_ask_name
-  - intent: tell_name
-    entities:
-      - name: "buddy"
-  - slot_was_set:
-    - name: "man"      
-  - action: utter_greet
   - intent: prescription_refills
-  - action: utter_slots_values
-
+  - action: action_check_for_refills
+  - intent: refill_request
+    entities:
+      - refill_items: medicins
+  - slot_was_set:
+    - refill_items: medicins
+  - action: action_submit_refill_request
 
 - story: happy_appointment_path
   steps:
-  - intent: greet
-  - action: utter_ask_name
-  - intent: tell_name
-    entities:
-    - name: Shinjo
-  - slot_was_set:
-    - name: Shinjo
-  - action: utter_greet
   - intent: appointment
   - action: appointment_form
   - active_loop: appointment_form
@@ -51,15 +120,47 @@ stories:
   - slot_was_set:
     - age: '38'
   - slot_was_set:
+    - requested_slot: gender
+  - slot_was_set:
+    - gender: 'male'
+  - slot_was_set:
     - requested_slot: symptom
   - slot_was_set:
     - symptom: Flue
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
+  - action: action_utter_department
+  - intent: tell_department
+    entities:
+      - department: "dept"
+  - slot_was_set:
+    - department: "dept"
+  - action: action_utter_doctor
+  - intent: tell_doctor
+    entities:
+      - doctor: "dept"
+  - slot_was_set:
+    - doctor: "dept"
+  - action: action_utter_schedule
+  - intent: tell_schedule
+    entities:
+      - date: "23/12/2023"
+      - time: "12:00 AM"
+  - slot_was_set:
+    - date: "dept"
+  - slot_was_set:
+    - time: "dept"
   - action: utter_slots_values
   
 - story: happy_appointment_submit_path
+  steps:
+  - intent: affirm
+  - action: action_utter_submit
+  - intent: affirm
+  - action: utter_anything_else
+
+- story: nothing_else_path
   steps:
   - intent: affirm
   - action: action_utter_submit
@@ -78,6 +179,6 @@ stories:
     - slot: age
   - action: action_utter_ask_slot
   - intent: tell_update_slot
-  - action: action_update_slot
-  - action: utter_slots_values
+  
+  
 

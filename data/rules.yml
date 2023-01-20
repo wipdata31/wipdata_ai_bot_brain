@@ -23,5 +23,37 @@ rules:
     - action: utter_please_rephrase
   - rule: ask anything else fo helping
     steps:
-    - intent: affirm
+    - intent: else_affirm
     - action: utter_anything_else
+  - rule: update mobile number
+    steps:
+    - intent: tell_mobile
+      entities:
+      - mobile: '46377382'
+    - slot_was_set:
+      - mobile: '46377382'
+    - action: utter_slots_values
+  - rule: update age
+    steps:
+    - intent: tell_age
+      entities:
+      - age: '38'
+    - slot_was_set:
+      - age: '38'
+    - action: utter_slots_values
+  - rule: update gender
+    steps:
+    - intent: tell_gender
+      entities:
+      - gender: 'male'
+    - slot_was_set:
+      - gender: 'male'
+    - action: utter_slots_values
+  - rule: update symptom
+    steps:
+    - intent: tell_symptom
+      entities:
+      - symptom: flue
+    - slot_was_set:
+      - symptom: Flue
+    - action: utter_slots_values

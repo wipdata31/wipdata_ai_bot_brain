@@ -4,7 +4,7 @@ nlu:
   examples: |
     - My name is [Justine Kuper](name).
     - I am [John](name).
-    - I am [Anaz](name).
+    - I am [Anaz Abdul Karim](name).
     - [Shakur](name).
     - [Borhan](name).
     - [Ab Ba As Ke Nu Br Suja Kash](name).
@@ -12,7 +12,9 @@ nlu:
     - [David](name)
     - [Shala](name)
     - [Shahana](name)
-    - [Shakur](name)
+    - [Abdus Shakur](name)
+    - I am Shuna
+    - I am [Rovert](name)
 - intent: greet
   examples: |
     - hey
@@ -85,15 +87,51 @@ nlu:
     - I am [27](age) years old.
     - [30](age) years old.
     - [40](age) years old.
+- intent: tell_gender
+  examples: |
+    - I am [male](gender).
+    - I am [female](gender).
+    - [male](gender).
+    - [female](gender).
+- intent: tell_department
+  examples: |
+    - Department is [Cardiology](department)
+    - Department is [General Surgery](department)
+    - Department is [Gastroenterology and Hepatology](department)
+- intent: tell_doctor
+  examples: |
+    - Doctor is [Dr Loh Pei Kee](doctor)
+    - Doctor is [Dr Choy Chun Ngok](doctor)
+    - Doctor is [Dr Mohd Hanis Hj Ahmad](doctor)
+    - Doctor is [Dr Koh Kok Wei](doctor)
+    - Doctor is [Dr Yap Beng Khiong](doctor)
+    - Doctor is [Dr Shamruz Khan Akerem Khan](doctor)
+- intent: tell_schedule
+  examples: |
+    - schedule is [3/18/2023](date), [12:00:00 AM](time)
+    - schedule is [3/16/2023](date), [10:10:00 AM](time)
+    - schedule is [4/20/2023](date), [03:50:00 AM](time)
+    - schedule is [12/15/2023](date), [09:00:00 PM](time)
+    - schedule is [3/30/2023](date), [11:55:00 PM](time)
 - intent: tell_symptom
   examples: |
-    - I have [Flue](symptom)
-    - I have serious [Back pain](symptom)
-    - Suffering from [Fever](symptom)
+    - I have [Flue](symptom), [fever](symptom), [caugh](symptom)
+    - I have serious [Back pain](symptom), [fever](symptom)
+    - Suffering from [Fever](symptom), [headache](symptom)
+- intent: refill_request
+  examples: |
+    - Refill [Esloric](refill_items), [Emorivir](refill_items), [Aclitol](refill_items)
+    - Refill serious [Geston](refill_items), [Camlotel](refill_items), [Remivir](refill_items), [Erlonix](refill_items)
+    - Refill serious [Xinc](refill_items), [Ostocal](refill_items)
 - intent: update_slot
   examples: |
     - I want to change my [age](slot).
+    - I want to change my [gender](slot).
+    - I want to change my [symptom](slot).
     - I want to change my [mobile](slot) number.
+    - I want to change [department](slot).
+    - I want to change [doctor](slot).
+    - Want to change [schedule](slot).
 - intent: tell_update_slot
   examples: |
     - 10
@@ -101,3 +139,35 @@ nlu:
 - intent: form_deny
   examples: |
     - not correct
+    - it is not correct
+    - na
+- intent: else_affirm
+  examples: |
+    - Yes can
+    - can
+    - SITKA
+- intent: tell_state
+  examples: |
+    - state is [AL](state)
+    - state is [AK](state)
+    - state is [CO](state)
+    - state is [DE](state)
+    - state is [WV](state)
+- intent: tell_city
+  examples: |
+    - city is [ALABASTER](city)
+    - city is [ANCHORAGE](city)
+    - city is [BETHEL](city)
+    - city is [SITKA](city)
+    - city is [JUNEAU](city)
+- intent: tell_procedure
+  examples: |
+    - procedure is [EXTRACRANIAL PROCEDURES](procedure),
+    - procedure is [DEGENERATIVE NERVOUS SYSTEM DISORDERS](procedure),
+    - procedure is [INTRACRANIAL HEMORRHAGE OR CEREBRAL INFARCTION](procedure),
+    - procedure is [TRANSIENT ISCHEMIA](procedure),
+    - procedure is [CRANIAL & PERIPHERAL NERVE DISORDERS](procedure),
+    - procedure is [SEIZURES](procedure),
+    - procedure is [DYSEQUILIBRIUM](procedure),
+    - procedure is [PULMONARY EMBOLISM](procedure),
+    - procedure is [RESPIRATORY INFECTIONS & INFLAMMATIONS](procedure)
