@@ -1,0 +1,59 @@
+version: "3.1"
+
+rules:
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+    - intent: goodbye
+    - action: utter_goodbye
+  - rule: Say 'I am a bot' anytime the user challenges
+    steps:
+    - intent: bot_challenge
+    - action: utter_iamabot
+  - rule: respond to FAQs
+    steps:
+    - intent: faq_ask_about_wipdata
+    - action: utter_ask_about_wipdata
+  - rule: out-of-scope
+    steps:
+    - intent: out_of_scope
+    - action: utter_out_of_scope
+  - rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+    steps:
+    - intent: nlu_fallback
+    - action: utter_please_rephrase
+  - rule: update mobile number
+    steps:
+    - intent: tell_mobile
+      entities:
+      - mobile: '46377382'
+    - slot_was_set:
+      - mobile: '46377382'
+    - action: utter_slots_values
+  - rule: update age
+    steps:
+    - intent: tell_age
+      entities:
+      - age: '38'
+    - slot_was_set:
+      - age: '38'
+    - action: utter_slots_values
+  - rule: update gender
+    steps:
+    - intent: tell_gender
+      entities:
+      - gender: 'male'
+    - slot_was_set:
+      - gender: 'male'
+    - action: utter_slots_values
+  - rule: update symptom
+    steps:
+    - intent: tell_symptom
+      entities:
+      - symptom: flue
+    - slot_was_set:
+      - symptom: Flue
+    - action: utter_slots_values
+  - rule: Handoff
+    steps:
+    - intent: human_handoff
+    - action: utter_handoff

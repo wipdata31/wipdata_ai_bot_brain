@@ -1,0 +1,52 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-end_date",
+      "2": "I-end_date",
+      "3": "L-end_date",
+      "4": "U-end_date",
+      "5": "B-leave_reason",
+      "6": "I-leave_reason",
+      "7": "L-leave_reason",
+      "8": "U-leave_reason",
+      "9": "B-name",
+      "10": "I-name",
+      "11": "L-name",
+      "12": "U-name",
+      "13": "B-slot",
+      "14": "I-slot",
+      "15": "L-slot",
+      "16": "U-slot",
+      "17": "B-start_date",
+      "18": "I-start_date",
+      "19": "L-start_date",
+      "20": "U-start_date",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-end_date": 1,
+      "I-end_date": 2,
+      "L-end_date": 3,
+      "U-end_date": 4,
+      "B-leave_reason": 5,
+      "I-leave_reason": 6,
+      "L-leave_reason": 7,
+      "U-leave_reason": 8,
+      "B-name": 9,
+      "I-name": 10,
+      "L-name": 11,
+      "U-name": 12,
+      "B-slot": 13,
+      "I-slot": 14,
+      "L-slot": 15,
+      "U-slot": 16,
+      "B-start_date": 17,
+      "I-start_date": 18,
+      "L-start_date": 19,
+      "U-start_date": 20,
+      "O": 0
+    },
+    "num_tags": 21
+  }
+]

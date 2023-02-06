@@ -1,0 +1,180 @@
+version: '3.1'
+intents:
+- tell_name
+- affirm
+- error_notification
+- bot_challenge
+- deny
+- else_affirm
+- faq_ask_about_wipdata
+- form_deny
+- goodbye
+- greet
+- nlu_fallback
+- maintenance_support
+- hr
+- leave_application
+- tell_start_date
+- tell_end_date
+- tell_leave_reason
+- tell_report_issue
+- tell_remark
+- report_issue
+- inventory
+- tell_update_slot
+- update_slot
+- human_handoff
+entities:
+- name
+- start_date
+- end_date
+- leave_reason
+- report_issue
+- remark
+- slot
+slots:
+  name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: name
+  start_date:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: start_date
+  end_date:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: end_date
+  leave_reason:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: leave_reason
+  report_issue:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: report_issue
+  remark:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: remark
+  slot:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: slot 
+responses:
+  utter_ask_update_slot:
+  - text: Which information do you want to change?
+  utter_ask_name:
+  - text: Hi, Hope you are having a good day. Could we start with your name please?
+  utter_greet:
+  - text: Hey {name}, I am your healthcare assistant! How can I help you?
+    buttons:
+    - title: Error Notification
+      payload: /error_notification
+    - title: Maintenance Support
+      payload: /maintenance_support
+    - title: HR
+      payload: /hr
+  - text: Hello {name}, I am ACEVA a healthcare assistant! How can I help you?
+    buttons:
+    - title: Error Notification
+      payload: /error_notification
+    - title: Maintenance Support
+      payload: /maintenance_support
+    - title: HR
+      payload: /hr
+  - text: Hi {name}, I am ACEVA your healthcare assistant! How can I help you?
+    buttons:
+    - title: Error Notification
+      payload: /error_notification
+    - title: Maintenance Support
+      payload: /maintenance_support
+    - title: HR
+      payload: /hr
+  utter_anything_else:
+  - text: How can I help you?
+    buttons:
+    - title: Error Notification
+      payload: /error_notification
+    - title: Maintenance Support
+      payload: /maintenance_support
+    - title: HR
+      payload: /hr
+  utter_hr_options:
+  - text: "Select an option:"
+    buttons:
+    - title: Leave Application
+      payload: /leave_application
+  utter_goodbye:
+  - text: Have a nice day {name}!
+  utter_iamabot:
+  - text: I'm a virtual assistant developped by Wipdata here to assist with your questions.
+  utter_ask_about_wipdata:
+  - text: The wipdata is a Malayasian based tech company mostly work on Artificial intelligence and data automation.
+  utter_out_of_scope:
+  - text: Sorry, I can't handle that request. For connecting to a human agent please click the button.
+    buttons:
+    - title: Live human agent
+      payload: https://t.me/wipdatabotchannel
+  utter_handoff:
+  - text: "For connecting to a human agent please click the button."
+    buttons:
+    - title: Live human agent
+      payload: https://t.me/wipdatabotchannel
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+  utter_ask_leave_reason:
+  - text: What is your leave reason?
+  utter_ask_report_issue:
+  - text: What is the issue?
+  utter_ask_remark:
+  - text: Any remarks?
+  utter_slots_values:
+  - text: '{name} thanks for your informations. Your given informations are: Start Date- {start_date}, End Date- {end_date} and Leave Reason- {leave_reason}. Are these correct?'
+  utter_report:
+  - custom:
+      text: "Here is the query result. Can I help you with anything else?"
+      payload: "{}"
+  utter_general_custom:
+  - custom:
+      text: "Here is the query result."
+      payload: "{}"
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+actions:
+- action_utter_ask_slot
+- action_utter_leave_application_submit
+- utter_anything_else
+- utter_ask_report_issue
+- utter_ask_remark
+- utter_ask_update_slot
+- utter_hr_options
+- utter_goodbye
+- utter_greet
+- utter_please_rephrase
+- utter_slots_values
+- utter_report
+- utter_general_custom
+forms:
+  leave_application_form:
+    ignored_intents:
+    - tell_name
+    required_slots:
+    - start_date
+    - end_date
+    - leave_reason
+  report_issue_form:
+    ignored_intents:
+    - tell_name
+    required_slots:
+    - start_date
+    - report_issue
+    - remark
