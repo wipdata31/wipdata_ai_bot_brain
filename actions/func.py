@@ -2,7 +2,8 @@ import os
 import requests
 import json
 
-baseUrl = 'http://localhost:5000'
+# baseUrl = 'http://localhost:5000'
+baseUrl = 'https://aibotapis.azurewebsites.net'
 
 def create_appointment(name, age, gender, symptom, date, time, mobile, department, doctor, schedule):
     request_url = f"{baseUrl}/api/appointment"
