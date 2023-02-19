@@ -20,7 +20,7 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt
 RUN pip install requests
 
 # Copy actions folder to working directory
-COPY ../actions /app/actions
+COPY ./actions /app/actions
 
 # Switch back to non-root to run code
 USER 1001
