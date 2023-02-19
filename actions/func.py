@@ -243,7 +243,7 @@ def create_order(userId, refill_items):
     return response
 
     #for running the githube action. no use of this code bloc
-    def no_use(userId, refill_items):
+    def no_use_1(userId, refill_items):
         request_url = f"{baseUrl}/api/appointment"
 
         headers = {
