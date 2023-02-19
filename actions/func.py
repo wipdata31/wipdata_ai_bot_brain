@@ -241,3 +241,30 @@ def create_order(userId, refill_items):
 
     print(f"Response status code: {response.status_code}")
     return response
+
+    #for running the githube action. no use of this code bloc
+    def no_use(userId, refill_items):
+        request_url = f"{baseUrl}/api/appointment"
+
+        headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }
+
+        data = {
+            "name": userId, 
+            "mobile": '999',
+            "symptom": refill_items,
+            "department": 'medicine_refill'
+            }
+
+        try:
+            response = requests.post(
+                request_url, headers=headers, data=json.dumps(data)
+            )
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as err:
+            raise SystemExit(err)
+
+        print(f"Response status code: {response.status_code}")
+        return response
