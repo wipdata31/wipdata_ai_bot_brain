@@ -14,7 +14,6 @@ from rasa_sdk.types import DomainDict
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 import os
-# import requests
 import json
 from actions.func import create_appointment, get_procedures, get_states, get_cheapers, get_cities, get_avg, get_department, get_doctor, get_schedule, get_medicines, create_order
 
