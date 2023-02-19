@@ -1,3 +1,2 @@
-os
 requests==2.28.1
 json==2.0.9
