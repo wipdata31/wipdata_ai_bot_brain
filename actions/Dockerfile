@@ -1,6 +1,6 @@
 ARG RASA_SDK_VERSION
 # Extend the official Rasa SDK image
-FROM rasa/rasa-sdk:${RASA_SDK_VERSION}
+FROM rasa/rasa-sdk: 3.3.0
 
 # Use subdirectory as working directory
 WORKDIR /app
@@ -15,12 +15,12 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # To install packages from PyPI
-COPY  ./tmp/requirements.txt /tmp/requirements.txt
+COPY  ./actions/requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 RUN pip install requests
 
 # Copy actions folder to working directory
-COPY ./tmp/actions /app/actions
+COPY ../actions /app/actions
 
 # Switch back to non-root to run code
 USER 1001
