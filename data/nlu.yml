@@ -357,6 +357,7 @@ nlu:
 - intent: affirm
   examples: |
     - yes
+    - yap
     - y
     - indeed
     - of course
@@ -364,8 +365,9 @@ nlu:
     - correct
 - intent: deny
   examples: |
-    - no
     - n
+    - no
+    - none
     - never
     - I don't think so
     - don't like that
@@ -934,54 +936,59 @@ nlu:
     - [9](age).
     - My age is [97](age).
     - My age is [40](age).
-    - My age is [70](age).
-    - My age is [11](age).
-    - My age is [17](age).
-    - My age is [33](age).
-    - My age is [44](age).
-    - My age is [88](age).
-    - My age is [60](age).
-    - My age is [33](age).
-    - My age is [71](age).
-    - My age is [8](age) 
-    - My age is [37](age).
-    - My age is [32](age).
-    - My age is [52](age).
-    - My age is [37](age).
     - I am [14](age) years old.
     - I am [95](age) years old.
-    - I am [47](age) years old.
-    - I am [38](age) years old.
-    - I am [20](age) years old.
-    - I am [98](age) years old.
-    - I am [71](age) years old.
-    - I am [57](age) years old.
-    - I am [87](age) years old.
-    - I am [35](age) years old.
-    - I am [23](age) years old.
-    - I am [96](age) years old.
-    - I am [17](age) years old.
-    - I am [18](age) years old.
-    - I am [87](age) years old.
-    - I am [93](age) years old.
-    - I am [76](age) years old.
-    - I am [46](age) years old.
-    - I am [68](age) years old.
-    - I am [99](age) years old.
-    - I am [26](age) years old.
-    - I am [40](age) years old.
-    - I am [33](age) years old.
-    - I am [39](age) years old.
-    - I am [93](age) years old.
-    - I am [37](age) years old.
-    - I am [62](age) years old.
-    - I am [60](age) years old.
-    - I am [58](age) years old.
-    - I am [99](age) years old.
-    - I am [0](age) years old.
-    - I am [27](age) years old.
-    - I am [12](age) years old.
-    - I am [2](age) years old.
+    - [55](age).
+    - [97](age).
+    - [40](age).
+    - [70](age).
+    - [11](age).
+    - [17](age).
+    - [33](age).
+    - [44](age).
+    - [88](age).
+    - [60](age).
+    - [33](age).
+    - [71](age).
+    - [8](age) 
+    - [37](age).
+    - [32](age).
+    - [52](age).
+    - [37](age).
+    - [14](age).
+    - [95](age).
+    - [47](age).
+    - [38](age).
+    - [20](age).
+    - [98](age).
+    - [71](age).
+    - [57](age).
+    - [87](age).
+    - [35](age).
+    - [23](age).
+    - [96](age).
+    - [17](age).
+    - [18](age).
+    - [87](age).
+    - [93](age).
+    - [76](age).
+    - [46](age).
+    - [68](age).
+    - [99](age).
+    - [26](age).
+    - [40](age).
+    - [33](age).
+    - [39](age).
+    - [93](age).
+    - [37](age).
+    - [62](age).
+    - [60](age).
+    - [58](age).
+    - [99](age).
+    - [0](age).
+    - [27](age).
+    - [12](age).
+    - [2](age).
     - [55](age).
     - [76](age).
     - [54](age).
@@ -997,6 +1004,11 @@ nlu:
     - [33](age).
     - [52](age).
     - [4](age).
+    - [50](age) Yr.
+    - [50](age) yo.
+    - [50](age) years.
+    - [50](age) yr old.
+    - [50](age).
 - intent: tell_gender
   examples: |
     - I am [male](gender).
@@ -1177,6 +1189,13 @@ nlu:
     - I want to change [department](slot).
     - I want to change [doctor](slot).
     - Want to change [schedule](slot).
+    - [age](slot).
+    - [gender](slot).
+    - [symptom](slot).
+    - [mobile](slot) number.
+    - [department](slot).
+    - [doctor](slot).
+    - [schedule](slot).
 - intent: tell_update_slot
   examples: |
     - 10

@@ -131,22 +131,6 @@ class ValidateAppointmentForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_appointment_form"
 
-    def validate_mobile(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
-    ) -> Dict[Text, Any]:
-        """Validate mobile value."""
-        print(len(slot_value))
-        if len(slot_value) > 9:
-            # validation succeeded, set the value of the "mobile" slot to value
-            return {"mobile": slot_value}
-        else:
-            # validation failed, set this slot to None so that the
-            # user will be asked for the slot again
-            return {"mobile": None}
     def validate_age(
         self,
         slot_value: Any,
@@ -156,13 +140,29 @@ class ValidateAppointmentForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate age value."""
         print(len(slot_value))
-        if len(slot_value) < 4:
+        if ((len(slot_value) < 4) and (tracker.slots.get("requested_slot") == 'age')):
             # validation succeeded, set the value of the "age" slot to value
             return {"age": slot_value}
         else:
             # validation failed, set this slot to None so that the
             # user will be asked for the slot again
             return {"age": None}
+    def validate_mobile(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        """Validate mobile value."""
+        print(len(slot_value))
+        if ((len(slot_value) > 9) and (tracker.slots.get("requested_slot") == 'mobile')):
+            # validation succeeded, set the value of the "mobile" slot to value
+            return {"mobile": slot_value}
+        else:
+            # validation failed, set this slot to None so that the
+            # user will be asked for the slot again
+            return {"mobile": None}
 
 class AppointmentSubmit(Action):
 
