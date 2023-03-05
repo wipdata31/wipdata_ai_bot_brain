@@ -57,3 +57,7 @@ rules:
     steps:
     - intent: human_handoff
     - action: utter_handoff
+  - rule: finishing_conversation_rule
+    steps:
+    - intent: finishing_conversation
+    - action: utter_smile

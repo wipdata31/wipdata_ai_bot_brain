@@ -29,6 +29,7 @@ intents:
 - tell_city
 - refill_request
 - human_handoff
+- finishing_conversation
 entities:
 - name
 - mobile
@@ -168,6 +169,8 @@ responses:
       payload: /cheaper_provider
   utter_goodbye:
   - text: Have a nice day {name}!
+  utter_smile:
+  - text: 😊
   utter_iamabot:
   - text: I'm a virtual assistant here to assist with your questions.
   utter_ask_about_wipdata:
@@ -260,6 +263,7 @@ actions:
 - action_utter_schedule
 - action_check_for_refills
 - action_submit_refill_request
+- utter_smile
 forms:
   appointment_form:
     ignored_intents:
