@@ -81,22 +81,16 @@ nlu:
 - regex: mobile
   examples: |
     - \d{10,12}
-- regex: age
-  examples: |
-    - \d{1,3}
 - intent: tell_mobile
   examples: |
     - number is [01843727741](mobile)
     - My number is [01843727741](mobile)
-    - My mobile number is [46377382](mobile)
+    - My mobile number is [4637457382](mobile)
     - [33315327130](mobile)
     - [95084324011](mobile)
-    - [26259242235](mobile)
-    - [40790782507](mobile)
-    - [62639147558](mobile)
-    - [34457356483](mobile)
-    - [23649642099](mobile)
-    - [26599361032](mobile)
+- regex: age
+  examples: |
+    - \d{1,3}
 - intent: tell_age
   examples: |
     - I am [27](age) years old.

@@ -53,12 +53,12 @@ slots:
     - type: from_entity
       entity: name
   mobile:
-    type: text
+    type: any
     mappings:
     - type: from_entity
       entity: mobile
   age:
-    type: text
+    type: any
     mappings:
     - type: from_entity
       entity: age
