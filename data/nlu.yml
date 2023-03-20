@@ -17,6 +17,17 @@ nlu:
     - goodevening
     - good afternoon
     - Hi
+- regex: tell_name
+  examples: |
+    - namehide 
+- intent: tell_name
+  examples: |
+    - My namehide is Justine Kuper.
+    - My name is Justine Kuper.
+    - I am John.
+    - I am Anaz Abdul Karim.
+    - Jack.
+    - Borhan.
 - intent: goodbye
   examples: |
     - cu
@@ -78,9 +89,6 @@ nlu:
     - I want to order food
     - What is 2 + 2?
     - Who's the US President?
-- regex: mobile
-  examples: |
-    - \d{10,12}
 - intent: tell_mobile
   examples: |
     - number is [01843727741](mobile)
@@ -88,9 +96,6 @@ nlu:
     - My mobile number is [4637457382](mobile)
     - [33315327130](mobile)
     - [95084324011](mobile)
-- regex: age
-  examples: |
-    - \d{1,3}
 - intent: tell_age
   examples: |
     - I am [27](age) years old.
@@ -113,15 +118,7 @@ nlu:
   examples: |
     - I am [male](gender).
     - [male](gender).
-    - [male](gender).
-    - [male](gender).
     - [others](gender).
-    - [others](gender).
-    - [others](gender).
-    - [others](gender).
-    - [others](gender).
-    - [male](gender).
-    - [male](gender).
     - [female](gender).
     - I am [female](gender).
 - intent: tell_department
@@ -185,9 +182,8 @@ nlu:
     - Doctor is [Dr Chang Chee Khong](doctor)
     - Doctor is [Dr Loh Liew Cheng](doctor)
     - Doctor is [Dr Yap Yen Piow](doctor)
-
 - intent: tell_schedule
-  examples: |               
+  examples: |
     - schedule is [3/16/2023](date), [10:10:00 AM](time)
     - schedule is [1/15/2023](date), [03:50:00 AM](time)
     - schedule is [4/20/2023](date), [03:50:00 AM](time)
@@ -830,9 +826,6 @@ nlu:
     - i dont wanna talk to a bot
     - i want to speak to a real person
     - i want to speak to customer service
-    - i want to talk to a human
-    - i want to talk to a person
-    - i want to talk to human
     - i want to talk to someone at rasa
     - i want to talk to someone else
     - i want to talk to someone who is smarter than you
@@ -869,7 +862,6 @@ nlu:
     - talk to human
     - i want human :(
     - can i talk to human
-    - i want to talk to a human
     - i want to speak to human
     - can i talk to a real person?
     - connect me to a real person
@@ -878,3 +870,9 @@ nlu:
     - let me speak to a real person
     - let me speak to a real person please
     - i want to talk to a real person
+- regex: age
+  examples: |
+    - \d{1,3}
+- regex: mobile
+  examples: |
+    - \d{10,12}

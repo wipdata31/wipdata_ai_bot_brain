@@ -7,7 +7,6 @@ intents:
 - faq_ask_about_wipdata
 - goodbye
 - greet
-- nlu_fallback
 - prescription_refills
 - procedure_cost_estimation
 - tell_age
@@ -264,6 +263,7 @@ actions:
 - action_check_for_refills
 - action_submit_refill_request
 - utter_smile
+- action_tell_name
 forms:
   appointment_form:
     ignored_intents:

@@ -7,10 +7,11 @@ stories:
   - intent: greet
   - action: utter_ask_name
   - intent: tell_name
-    entities:
-      - name: "buddy"
-  - slot_was_set:
-    - name: "man"      
+  #   entities:
+  #     - name: "buddy"
+  # - slot_was_set:
+  #   - name: "man"   
+  - action: action_tell_name
   - action: utter_greet
 
 - story: happy procedure cost estimate path

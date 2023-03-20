@@ -64,6 +64,16 @@ class AskForSlotAction(Action):
 #         value = tracker.latest_message.get("text")
 #         return [SlotSet(tracker.slots.get("slot"), value)]
 
+class UpdateNameSlotAction(Action):
+    def name(self) -> Text:
+        return "action_tell_name"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[Text]:
+        value = tracker.latest_message.get("text").lower().replace("namehide", "").replace(" my name is ", "").replace(" i am ", "").replace(" call me ", "").replace(" i am known as ", "").upper()
+        return [SlotSet('name', value)]
+
 class GetDepartments(Action):
 
     def name(self) -> Text:
