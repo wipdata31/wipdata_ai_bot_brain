@@ -23,7 +23,7 @@ nlu:
 - intent: tell_name
   examples: |
     - My namehide is Justine Kuper.
-    - My name is Justine Kuper.
+    - My namehide is Justine Kuper.
     - I am John.
     - I am Anaz Abdul Karim.
     - Jack.
@@ -89,6 +89,12 @@ nlu:
     - I want to order food
     - What is 2 + 2?
     - Who's the US President?
+- regex: age
+  examples: |
+    - \d{1,3}
+- regex: mobile
+  examples: |
+    - \d{10,12}
 - intent: tell_mobile
   examples: |
     - number is [01843727741](mobile)
@@ -100,16 +106,10 @@ nlu:
   examples: |
     - I am [27](age) years old.
     - [30](age) years old.
-    - [40](age) years old.
-    - I am [41](age) years old.
-    - [58](age).
-    - [86](age).
-    - [91](age).
-    - [92](age).
     - My age is [97](age).
-    - My age is [40](age).
     - I am [14](age) years old.
-    - I am [95](age) years old.
+    - [40](age)
+    - [85](age)
     - [50](age) Yr.
     - [50](age) yo.
     - [50](age) years.
@@ -248,7 +248,7 @@ nlu:
     - I have [Swollen gums](symptom), [Gum swelling](symptom), [Low blood sugar](symptom)
     - I have [Hyperpigmentation (Darkening skin)](symptom), [Skin darkening](symptom), [Low heart rate](symptom)
     - I have [Foot itching](symptom), [Itching feet](symptom), [Hot flashes](symptom)
-    - I have [Skipped periods](symptom), [Infertility (Female)](symptom), [Sterility (female)](symptom)
+    - I have [Skipped periods](symptom), [Infertility](symptom), [Sterility](symptom)
     - I have [Arm swelling](symptom), [Calf swelling](symptom), [Leg swelling](symptom)
     - I have [Tarry stools](symptom), [Maroon stools](symptom), [Diplopia (Seeing double)](symptom)
     - I have [Leg cut (laceration)](symptom), [Foot cut (laceration)](symptom), [Arm itching](symptom)
@@ -295,7 +295,6 @@ nlu:
 - intent: tell_update_slot
   examples: |
     - 10
-    - male
 - intent: tell_state
   examples: |
     - state is [AL](state)
@@ -870,9 +869,4 @@ nlu:
     - let me speak to a real person
     - let me speak to a real person please
     - i want to talk to a real person
-- regex: age
-  examples: |
-    - \d{1,3}
-- regex: mobile
-  examples: |
-    - \d{10,12}
+
