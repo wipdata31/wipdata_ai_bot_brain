@@ -72,6 +72,7 @@ nlu:
     - not correct
     - it is not correct
     - na
+    - No
 - intent: bot_challenge
   examples: |
     - are you a bot?
@@ -101,7 +102,6 @@ nlu:
     - My number is [01843727741](mobile)
     - My mobile number is [4637457382](mobile)
     - [33315327130](mobile)
-    - [95084324011](mobile)
 - intent: tell_age
   examples: |
     - I am [27](age) years old.
@@ -109,10 +109,8 @@ nlu:
     - My age is [97](age).
     - I am [14](age) years old.
     - [40](age)
-    - [85](age)
     - [50](age) Yr.
     - [50](age) yo.
-    - [50](age) years.
     - [50](age) yr old.
 - intent: tell_gender
   examples: |
@@ -292,9 +290,9 @@ nlu:
     - [department](slot).
     - [doctor](slot).
     - [schedule](slot).
-- intent: tell_update_slot
-  examples: |
-    - 10
+# - intent: tell_update_slot
+#   examples: |
+#     - 10
 - intent: tell_state
   examples: |
     - state is [AL](state)

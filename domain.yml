@@ -17,7 +17,7 @@ intents:
 - tell_department
 - tell_doctor
 - tell_schedule
-- tell_update_slot
+# - tell_update_slot
 - tell_procedure
 - update_slot
 - average_total_charge

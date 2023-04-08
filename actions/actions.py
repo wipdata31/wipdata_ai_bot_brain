@@ -71,7 +71,7 @@ class UpdateNameSlotAction(Action):
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[Text]:
-        value = tracker.latest_message.get("text").lower().replace("namehide", "").replace(" my name is ", "").replace(" i am ", "").replace(" call me ", "").replace(" i am known as ", "").upper()
+        value = tracker.latest_message.get("text").lower().replace("namehide ", "").replace(" my name is ", "").replace(" i am ", "").replace(" call me ", "").replace(" i am known as ", "").upper()
         return [SlotSet('name', value)]
 
 class GetDepartments(Action):
@@ -82,8 +82,8 @@ class GetDepartments(Action):
     def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        res = get_department()
+        symptom = tracker.slots.get("symptom")
+        res = get_department(symptom)
         print(res.json())
         if res.json():
              dispatcher.utter_message(

@@ -183,5 +183,5 @@ stories:
   - slot_was_set:
     - slot: age
   - action: action_utter_ask_slot
-  - intent: tell_update_slot
+  # - intent: tell_update_slot
   - checkpoint: check_submit_appointment

@@ -36,8 +36,8 @@ def create_appointment(name, age, gender, symptom, date, time, mobile, departmen
     return response
 
 
-def get_department():
-    request_url = f"{baseUrl}/api/doctor/getDept"
+def get_department(symptom):
+    request_url = f"{baseUrl}/api/doctor/getDept/{','.join(symptom)}"
 
     headers = {
         "Content-Type": "application/json",
