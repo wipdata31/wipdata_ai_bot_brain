@@ -84,14 +84,15 @@ class GetDepartments(Action):
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         symptom = tracker.slots.get("symptom")
         res = get_department(symptom)
-        print(res.json())
+        print(res.json()[0])
         if res.json():
              dispatcher.utter_message(
                 response= "utter_ask_department",
                 procedures= res.json(),
-                type= 'dropdown',
+                type= 'custom_text',
                 entity_name= 'Department'
-            )
+             )
+             return [SlotSet('department', res.json()[0])]
         else:
             dispatcher.utter_message(text="request unsuccessfull")
 

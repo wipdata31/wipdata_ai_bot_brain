@@ -201,7 +201,7 @@ responses:
       payload: Others
   utter_ask_department:
   - custom:
-      text: "Based on your symptoms, here are some departments of the specialist area. Select a"
+      text: "Based on your symptoms, here are some department suggestion of the specialist area. For proceeding, write yes."
       payload: "{}"
   utter_ask_doctor:
   - custom:
@@ -212,6 +212,7 @@ responses:
       text: "Pick a"
       payload: "{}"
   utter_ask_symptom:
+  - text: How are you feeling today?
   - text: What are your symptoms?
   utter_slots_values:
   - text: '{name} thanks for your informations. Your given informations are: mobile- {mobile}, age- {age}, gender- {gender}, department- {department}, doctor- {doctor}, schedule- {date}, {time} and your symptoms: {symptom}. Are these correct?'

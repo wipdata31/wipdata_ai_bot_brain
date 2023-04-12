@@ -132,11 +132,12 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: action_utter_department
-  - intent: tell_department
-    entities:
-      - department: "dept"
-  - slot_was_set:
-    - department: "dept"
+  - intent: affirm
+  # - intent: tell_department
+  #   entities:
+  #     - department: "dept"
+  # - slot_was_set:
+  #   - department: "dept"
   - action: action_utter_doctor
   - intent: tell_doctor
     entities:
