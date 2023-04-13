@@ -61,3 +61,7 @@ rules:
     steps:
     - intent: finishing_conversation
     - action: utter_smile
+  - rule: main_munu_rule
+    steps:
+    - intent: main_menu
+    - action: utter_anything_else

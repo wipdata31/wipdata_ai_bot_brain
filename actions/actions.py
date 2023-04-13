@@ -96,6 +96,26 @@ class GetDepartments(Action):
         else:
             dispatcher.utter_message(text="request unsuccessfull")
 
+class GetDepartmentsDrop(Action):
+
+    def name(self) -> Text:
+        return "action_utter_department_drop"
+
+    def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        symptom = tracker.slots.get("symptom")
+        res = get_department(symptom)
+        if res.json():
+             dispatcher.utter_message(
+                response= "utter_ask_department_drop",
+                procedures= res.json(),
+                type= 'dropdown',
+                entity_name= 'Department'
+             )
+        else:
+            dispatcher.utter_message(text="request unsuccessfull")
+
 class GetDoctor(Action):
 
     def name(self) -> Text:
@@ -197,7 +217,7 @@ class AppointmentSubmit(Action):
         res = create_appointment(name, age, gender, symptom, date, time, mobile, department, doctor, schedule )
 
         if res.json()['_id']:
-            dispatcher.utter_message(text="Appointment is successfully submitted. Your appointment id is " + res.json()['_id'] + ". Please store it for further use. Can I help you with anything else?")
+            dispatcher.utter_message(text="Appointment is successfully submitted. Your appointment id is " + res.json()['_id'] + ". Please store it for further use. <br/> Can I help you with anything else?")
         else:
             dispatcher.utter_message(text="Creating Appointment is unsuccessfull")
         
@@ -400,7 +420,7 @@ class SubmitRefillRequest(Action):
         res = create_order(userId, refill_items)
 
         if res.json()['_id']:
-            dispatcher.utter_message(text="Order is successfully placed to your medicine provider. Your order id is " + res.json()['_id'] + ". Please store it for further use. You will get a notification when the order will be started to process. Can I help you with anything else?")
+            dispatcher.utter_message(text="Order is successfully placed to your medicine provider. Your order id is " + res.json()['_id'] + ". Please store it for further use. You will get a notification when the order will be started to process. <br/><br/> Can I help you with anything else?")
         else:
             dispatcher.utter_message(text="Creating Order is unsuccessfull")
         

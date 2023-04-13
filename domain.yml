@@ -17,6 +17,7 @@ intents:
 - tell_department
 - tell_doctor
 - tell_schedule
+- main_menu
 # - tell_update_slot
 - tell_procedure
 - update_slot
@@ -168,6 +169,9 @@ responses:
       payload: /cheaper_provider
   utter_goodbye:
   - text: Have a nice day {name}!
+    buttons:
+    - title: Main menu
+      payload: /main_menu
   utter_smile:
   - text: 😊
   utter_iamabot:
@@ -201,7 +205,11 @@ responses:
       payload: Others
   utter_ask_department:
   - custom:
-      text: "Based on your symptoms, here are some department suggestion of the specialist area. For proceeding, write yes."
+      text: "Based on your symptoms, here are some department suggestion of the specialist area. To proceed, please confirm 'yes'."
+      payload: "{}"
+  utter_ask_department_drop:
+  - custom:
+      text: "Select a"
       payload: "{}"
   utter_ask_doctor:
   - custom:
@@ -212,10 +220,10 @@ responses:
       text: "Pick a"
       payload: "{}"
   utter_ask_symptom:
-  - text: How are you feeling today?
+  - text: How are you feeling today? May I know your symptoms?
   - text: What are your symptoms?
   utter_slots_values:
-  - text: '{name} thanks for your informations. Your given informations are: mobile- {mobile}, age- {age}, gender- {gender}, department- {department}, doctor- {doctor}, schedule- {date}, {time} and your symptoms: {symptom}. Are these correct?'
+  - text: '{name} thanks for your informations. Your given informations are: <br /><br /> 1) mobile- {mobile} <br /> 2) age- {age} <br /> 3) gender- {gender} <br /> 4) department- {department} <br /> 5) doctor- {doctor} <br /> 6) schedule- {date} {time} <br /> 7) your symptoms: {symptom}. <br /><br /> Are these correct?'
   utter_drop_value:
   - custom:
       text: "Select a"
@@ -242,6 +250,7 @@ actions:
 - utter_ask_schedule
 - utter_ask_doctor
 - utter_ask_department
+- utter_ask_department_drop
 - utter_ask_name
 - utter_ask_symptom
 - utter_ask_update_slot
@@ -258,6 +267,7 @@ actions:
 - action_utter_cheaper_provider
 - action_utter_average_charge
 - action_utter_average_medicare
+- action_utter_department_drop
 - action_utter_department
 - action_utter_doctor
 - action_utter_schedule

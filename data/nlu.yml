@@ -127,7 +127,7 @@ nlu:
     - Department is [Oncology](department)
     - Department is [Psychiatry](department)
     - Department is [Urology](department)
-    - Department is [General Surgery](department)
+    - Department is [Physician](department)
     - Department is [Sports Surgery](department)
     - Department is [Orthopaedic Surgery](department)
     - Department is [Gastroenterology and Hepatology](department)

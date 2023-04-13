@@ -132,12 +132,40 @@ stories:
     - requested_slot: null
   - active_loop: null
   - action: action_utter_department
+  - checkpoint: check_dept_select
+
+- story: happy_dept_select_path
+  steps:
+  - checkpoint: check_dept_select
   - intent: affirm
-  # - intent: tell_department
-  #   entities:
-  #     - department: "dept"
-  # - slot_was_set:
-  #   - department: "dept"
+  - action: action_utter_doctor
+  - intent: tell_doctor
+    entities:
+      - doctor: "dept"
+  - slot_was_set:
+    - doctor: "dept"
+  - action: action_utter_schedule
+  - intent: tell_schedule
+    entities:
+      - date: "23/12/2023"
+      - time: "12:00 AM"
+  - slot_was_set:
+    - date: "dept"
+  - slot_was_set:
+    - time: "dept"
+  - action: utter_slots_values
+  - checkpoint: check_submit_appointment
+
+- story: unhappy_dept_select_path
+  steps:
+  - checkpoint: check_dept_select
+  - intent: deny
+  - action: action_utter_department_drop
+  - intent: tell_department
+    entities:
+      - department: "dept"
+  - slot_was_set:
+    - department: "dept"
   - action: action_utter_doctor
   - intent: tell_doctor
     entities:
