@@ -191,7 +191,7 @@ nlu:
   examples: |
     - I have [Flu](symptom), [fever](symptom), [cough](symptom), [Migrain](symptom)
     - I have serious [Back pain](symptom), [fever](symptom)
-    - Suffering from [Flu](symptom), [headache](symptom)
+    - Suffering from [Flue](symptom), [headache](symptom)
     - I have [Upper abdominal pain](symptom), [Upper belly pain](symptom), [Lower abdominal pain](symptom)
     - I have [Boil (Furuncle)](symptom), [Alcohol abuse](symptom), [Excessive drinking](symptom)
     - I have [Nervousness](symptom), [Arm ache or pain](symptom), [Back ache or pain](symptom)
