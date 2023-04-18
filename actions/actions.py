@@ -104,7 +104,7 @@ class GetDepartmentsDrop(Action):
     def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        symptom = tracker.slots.get("symptom")
+        symptom = 'none'
         res = get_department(symptom)
         if res.json():
              dispatcher.utter_message(
@@ -183,16 +183,17 @@ class ValidateAppointmentForm(FormValidationAction):
         slot_value: Any,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
-        domain: DomainDict,
-    ) -> Dict[Text, Any]:
+        domain: DomainDict,) -> Dict[Text, Any]:
         """Validate mobile value."""
         print(len(slot_value))
-        if ((len(slot_value) > 9) and (tracker.slots.get("requested_slot") == 'mobile')):
+        
+        if len(slot_value) > 9:
             # validation succeeded, set the value of the "mobile" slot to value
             return {"mobile": slot_value}
         else:
             # validation failed, set this slot to None so that the
             # user will be asked for the slot again
+            dispatcher.utter_message(response="utter_wrong_num_mobile")
             return {"mobile": None}
 
 class AppointmentSubmit(Action):
