@@ -3,7 +3,8 @@ import requests
 import json
 
 # baseUrl = 'http://localhost:5000'
-baseUrl = 'https://aibotapis.azurewebsites.net'
+# baseUrl = 'https://aibotapis.azurewebsites.net'
+baseUrl = 'http://35.247.186.176:5000'
 
 def create_appointment(name, age, gender, symptom, date, time, mobile, department, doctor, schedule):
     request_url = f"{baseUrl}/api/appointment"
@@ -36,7 +37,7 @@ def create_appointment(name, age, gender, symptom, date, time, mobile, departmen
     return response
 
 
-def get_department(symptom):
+async def get_department(symptom):
     request_url = f"{baseUrl}/api/doctor/getDept/{','.join(symptom)}"
 
     headers = {
@@ -49,13 +50,15 @@ def get_department(symptom):
             request_url, headers=headers
         )
         response.raise_for_status()
+        print(f"Response status code: {response.status_code}")
+        return response
     except requests.exceptions.HTTPError as err:
         raise SystemExit(err)
+    except requests.exceptions.ConnectionError: 
+        ('Connection aborted.', OSError(107, 'Transport endpoint is not connected'))
 
-    print(f"Response status code: {response.status_code}")
-    return response
 
-def get_doctor(department):
+async def get_doctor(department):
     request_url = f"{baseUrl}/api/doctor/getDoctor/{department}"
 
     headers = {
@@ -68,11 +71,13 @@ def get_doctor(department):
             request_url, headers=headers
         )
         response.raise_for_status()
+        print(f"Response status code: {response.status_code}")
+        return response
     except requests.exceptions.HTTPError as err:
         raise SystemExit(err)
+    except requests.exceptions.ConnectionError: 
+        ('Connection aborted.', OSError(107, 'Transport endpoint is not connected'))
 
-    print(f"Response status code: {response.status_code}")
-    return response
 
 def get_schedule(doctor):
     request_url = f"{baseUrl}/api/doctor/getSchedule/{doctor}"
@@ -87,11 +92,13 @@ def get_schedule(doctor):
             request_url, headers=headers
         )
         response.raise_for_status()
+        print(f"Response of schedule status code: {response}")
+        return response
     except requests.exceptions.HTTPError as err:
         raise SystemExit(err)
+    except requests.exceptions.ConnectionError: 
+        ('Connection aborted.', OSError(107, 'Transport endpoint is not connected'))
 
-    print(f"Response of schedule status code: {response}")
-    return response
 
 def get_procedures():
     request_url = f"{baseUrl}/api/mediData/getProcedures"
@@ -106,11 +113,13 @@ def get_procedures():
             request_url, headers=headers
         )
         response.raise_for_status()
+        print(f"Response status code: {response.status_code}")
+        return response
     except requests.exceptions.HTTPError as err:
         raise SystemExit(err)
+    except requests.exceptions.ConnectionError: 
+        ('Connection aborted.', OSError(107, 'Transport endpoint is not connected'))
 
-    print(f"Response status code: {response.status_code}")
-    return response
 
 def get_states():
     request_url = f"{baseUrl}/api/mediData/getStates"
@@ -125,11 +134,13 @@ def get_states():
             request_url, headers=headers
         )
         response.raise_for_status()
+        print(f"Response status code: {response.status_code}")
+        return response
     except requests.exceptions.HTTPError as err:
         raise SystemExit(err)
+    except requests.exceptions.ConnectionError: 
+        ('Connection aborted.', OSError(107, 'Transport endpoint is not connected'))
 
-    print(f"Response status code: {response.status_code}")
-    return response
 
 def get_cheapers(procedure, state, city):
     request_url = f"{baseUrl}/api/mediData/getCheapers"
@@ -148,11 +159,13 @@ def get_cheapers(procedure, state, city):
             request_url, headers=headers, data=json.dumps(data)
         )
         response.raise_for_status()
+        print(f"Response status code: {response.status_code}")
+        return response
     except requests.exceptions.HTTPError as err:
         raise SystemExit(err)
+    except requests.exceptions.ConnectionError: 
+        ('Connection aborted.', OSError(107, 'Transport endpoint is not connected'))
 
-    print(f"Response status code: {response.status_code}")
-    return response
 
 def get_cities(state):
     request_url = f"{baseUrl}/api/mediData/getCities/{state}"
@@ -167,11 +180,13 @@ def get_cities(state):
             request_url, headers=headers
         )
         response.raise_for_status()
+        print(f"Response status code: {response.status_code}")
+        return response
     except requests.exceptions.HTTPError as err:
         raise SystemExit(err)
+    except requests.exceptions.ConnectionError: 
+        ('Connection aborted.', OSError(107, 'Transport endpoint is not connected'))
 
-    print(f"Response status code: {response.status_code}")
-    return response
 
 def get_avg(procedure, state, city, charges):
     request_url = f"{baseUrl}/api/mediData/getAvg"
@@ -192,11 +207,13 @@ def get_avg(procedure, state, city, charges):
             request_url, headers=headers, data=json.dumps(data)
         )
         response.raise_for_status()
+        print(f"Response status code: {response.status_code}")
+        return response
     except requests.exceptions.HTTPError as err:
         raise SystemExit(err)
+    except requests.exceptions.ConnectionError: 
+        ('Connection aborted.', OSError(107, 'Transport endpoint is not connected'))
 
-    print(f"Response status code: {response.status_code}")
-    return response
 
 def get_medicines(userId):
     request_url = f"{baseUrl}/api/user/getMedicines/{userId}"
@@ -210,11 +227,13 @@ def get_medicines(userId):
             request_url, headers=headers
         )
         response.raise_for_status()
+        print(f"Response status code: {response.status_code}")
+        return response
     except requests.exceptions.HTTPError as err:
         raise SystemExit(err)
+    except requests.exceptions.ConnectionError: 
+        ('Connection aborted.', OSError(107, 'Transport endpoint is not connected'))
 
-    print(f"Response status code: {response.status_code}")
-    return response
 
 def create_order(userId, refill_items):
     request_url = f"{baseUrl}/api/appointment"
@@ -236,11 +255,13 @@ def create_order(userId, refill_items):
             request_url, headers=headers, data=json.dumps(data)
         )
         response.raise_for_status()
+        print(f"Response status code: {response.status_code}")
+        return response
     except requests.exceptions.HTTPError as err:
         raise SystemExit(err)
+    except requests.exceptions.ConnectionError: 
+        ('Connection aborted.', OSError(107, 'Transport endpoint is not connected'))
 
-    print(f"Response status code: {response.status_code}")
-    return response
 
     #for running the githube action. no use of this code bloc
     def no_use_1(userId, refill_items):
@@ -263,8 +284,9 @@ def create_order(userId, refill_items):
                 request_url, headers=headers, data=json.dumps(data)
             )
             response.raise_for_status()
+            print(f"Response status code: {response.status_code}")
+            return response
         except requests.exceptions.HTTPError as err:
             raise SystemExit(err)
-
-        print(f"Response status code: {response.status_code}")
-        return response
+        except requests.exceptions.ConnectionError: 
+            ('Connection aborted.', OSError(107, 'Transport endpoint is not connected'))

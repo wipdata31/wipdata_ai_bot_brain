@@ -79,20 +79,20 @@ class GetDepartments(Action):
     def name(self) -> Text:
         return "action_utter_department"
 
-    def run(self, dispatcher: CollectingDispatcher,
+    async def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         symptom = tracker.slots.get("symptom")
-        res = get_department(symptom)
-        print(res.json()[0])
-        if res.json():
-             dispatcher.utter_message(
-                response= "utter_ask_department",
-                procedures= res.json(),
-                type= 'custom_text',
-                entity_name= 'Department'
-             )
-             return [SlotSet('department', res.json()[0])]
+        res = await get_department(symptom)
+        if res:
+            print(res.json()[0])
+            dispatcher.utter_message(
+            response= "utter_ask_department",
+            procedures= res.json(),
+            type= 'custom_text',
+            entity_name= 'Department'
+            )
+            return [SlotSet('department', res.json()[0])]
         else:
             dispatcher.utter_message(text="request unsuccessfull")
 
@@ -101,12 +101,12 @@ class GetDepartmentsDrop(Action):
     def name(self) -> Text:
         return "action_utter_department_drop"
 
-    def run(self, dispatcher: CollectingDispatcher,
+    async def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         symptom = 'none'
-        res = get_department(symptom)
-        if res.json():
+        res = await get_department(symptom)
+        if res:
              dispatcher.utter_message(
                 response= "utter_ask_department_drop",
                 procedures= res.json(),
@@ -121,13 +121,13 @@ class GetDoctor(Action):
     def name(self) -> Text:
         return "action_utter_doctor"
 
-    def run(self, dispatcher: CollectingDispatcher,
+    async def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         department = tracker.slots.get("department")
-        res = get_doctor(department)
+        res = await get_doctor(department)
 
-        if res.json():
+        if res:
              dispatcher.utter_message(
                 response= "utter_ask_doctor",
                 procedures= res.json(),
@@ -148,7 +148,7 @@ class GetSchedule(Action):
         doctor = tracker.slots.get("doctor")
         res = get_schedule(doctor)
 
-        if res.json():
+        if res:
              dispatcher.utter_message(
                 response= "utter_ask_schedule",
                 procedures= res.json(),
@@ -235,7 +235,7 @@ class GetProcedures(Action):
 
         res = get_procedures()
 
-        if res.json():
+        if res:
             # dispatcher.utter_message(text="Type any one procedure's name from below to select.\n" + ', '.join([str(elem) for elem in res.json()]))
             print(res.json())
             dispatcher.utter_message(
@@ -260,7 +260,7 @@ class GetStates(Action):
 
         res = get_states()
 
-        if res.json():
+        if res:
              dispatcher.utter_message(
                 response= "utter_drop_value",
                 procedures= res.json(),
@@ -281,7 +281,7 @@ class GetCities(Action):
         state = tracker.slots.get("state")
         res = get_cities(state)
 
-        if res.json():
+        if res:
              dispatcher.utter_message(
                 response= "utter_drop_value",
                 procedures= res.json(),
@@ -304,7 +304,7 @@ class GetCheaperCity(Action):
         city = tracker.slots.get("city")
         res = get_cheapers(procedure, state, city)
         print(res.json())
-        if res.json():
+        if res:
             dispatcher.utter_message(
                 response= "utter_report",
                 procedures= res.json(),
@@ -328,7 +328,7 @@ class GetCheaperProvider(Action):
         res = get_cheapers(procedure, state, city)
         print(res.json())
         print(procedure, state, city)
-        if res.json():
+        if res:
             dispatcher.utter_message(
                 response= "utter_report",
                 procedures= res.json(),
@@ -352,7 +352,7 @@ class GetAverageCharge(Action):
         res = get_avg(procedure, state, city, 1)
         print(res.json())
         print(procedure, state, city)
-        if res.json():
+        if res:
             dispatcher.utter_message(
                 response= "utter_report",
                 procedures= res.json(),
@@ -376,7 +376,7 @@ class GetAverageMedicare(Action):
         res = get_avg(procedure, state, city, 0)
         print(res.json())
         print(procedure, state, city)
-        if res.json():
+        if res:
             dispatcher.utter_message(
                 response= "utter_report",
                 procedures= res.json(),
@@ -397,7 +397,7 @@ class CheckRefills(Action):
         userId = tracker.sender_id
         res = get_medicines(userId)
         print(res.json())
-        if res.json():
+        if res:
             dispatcher.utter_message(
                 response= "utter_general_custom",
                 procedures= res.json(),
