@@ -216,7 +216,7 @@ def get_avg(procedure, state, city, charges):
 
 
 def get_medicines(userId):
-    request_url = f"{baseUrl}/api/user/getMedicines/{userId}"
+    request_url = f"{baseUrl}/api/user/getMedicines/182.48.77.87"
 
     headers = {
         "Content-Type": "application/json",

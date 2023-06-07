@@ -1,5 +1,20 @@
 version: "3.1"
 nlu:
+- intent: appointment
+  examples: |
+    - appointment
+    - I want to make an appointment
+    - please book an appointment for me
+- intent: prescription_refills
+  examples: |
+    - prescription refills
+    - I want to do prescription refills
+    - please refill my prescription
+- intent: procedure_cost_estimation
+  examples: |
+    - procedure cost estimation
+    - estimation about procedure cost
+    - cost estimation
 - intent: greet
   examples: |
     - salam

@@ -191,9 +191,9 @@ responses:
   utter_please_rephrase:
   - text: I'm sorry, I didn't quite understand that. Could you rephrase?
   utter_ask_mobile:
-  - text: Please provide your mobile number (it must be atleast 10 digit).
+  - text: Please provide your mobile number (it must be at least 10 digit).
   utter_wrong_num_mobile:
-    - text: "Mobile number must be atleast 10 digit."
+    - text: "Mobile number must be at least 10 digit. Please retry."
   utter_ask_age:
   - text: "What is your age? E.g. 25 years old,  50 years"
   utter_ask_gender:
