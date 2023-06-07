@@ -193,7 +193,7 @@ responses:
   utter_ask_mobile:
   - text: Please provide your mobile number (it must be at least 10 digit).
   utter_wrong_num_mobile:
-    - text: "Mobile number must be at least 10 digit. Please retry."
+    - text: "Mobile number must be at least 10 digit. Please try again."
   utter_ask_age:
   - text: "What is your age? E.g. 25 years old,  50 years"
   utter_ask_gender:
