@@ -41,8 +41,19 @@ stories:
   - slot_was_set:
     - city: "city"
   - action: action_utter_average_charge
+  - checkpoint: check_submit_average_charge
+
+- story: happy_average_charge
+  steps:
+  - checkpoint: check_submit_average_charge
   - intent: affirm
   - action: utter_procedurs_options
+
+- story: sad_average_charge
+  steps:
+  - checkpoint: check_submit_average_charge
+  - intent: deny
+  - action: utter_goodbye
 
 - story: happy_average_medicare_charge
   steps:
@@ -59,9 +70,20 @@ stories:
       - city: "city"
   - slot_was_set:
     - city: "city"
-  - action: action_utter_average_medicare
+  - action: action_utter_average_medicare  
+  - checkpoint: check_submit_average_medicare
+
+- story: happy_average_medicare
+  steps:
+  - checkpoint: check_submit_average_medicare
   - intent: affirm
   - action: utter_procedurs_options
+
+- story: sad_average_medicare
+  steps:
+  - checkpoint: check_submit_average_medicare
+  - intent: deny
+  - action: utter_goodbye
 
 - story: happy_cheaper_city
   steps:
@@ -73,8 +95,19 @@ stories:
   - slot_was_set:
     - state: "AL"
   - action: action_utter_cheaper_city   
+  - checkpoint: check_submit_cheaper_city
+
+- story: happy_cheaper_city
+  steps:
+  - checkpoint: check_submit_cheaper_city
   - intent: affirm
   - action: utter_procedurs_options
+
+- story: sad_cheaper_city
+  steps:
+  - checkpoint: check_submit_cheaper_city
+  - intent: deny
+  - action: utter_goodbye
 
 - story: happy_cheaper_provider
   steps:
@@ -92,8 +125,19 @@ stories:
   - slot_was_set:
     - city: "city"
   - action: action_utter_cheaper_provider
+  - checkpoint: check_submit_cheaper_provider
+
+- story: happy_cheaper_provider
+  steps:
+  - checkpoint: check_submit_cheaper_provider
   - intent: affirm
   - action: utter_procedurs_options  
+
+- story: sad_cheaper_provider
+  steps:
+  - checkpoint: check_submit_cheaper_provider
+  - intent: deny
+  - action: utter_goodbye
 
 
 - story: happy prescription refill path
@@ -106,6 +150,19 @@ stories:
   - slot_was_set:
     - refill_items: medicins
   - action: action_submit_refill_request
+  - checkpoint: check_submit_refill
+
+- story: happy_refill_submit_path
+  steps:
+  - checkpoint: check_submit_refill
+  - intent: affirm
+  - action: utter_anything_else
+
+- story: sad_refill_submit_path
+  steps:
+  - checkpoint: check_submit_refill
+  - intent: deny
+  - action: utter_goodbye
 
 - story: happy_appointment_path
   steps:
