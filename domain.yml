@@ -131,7 +131,7 @@ responses:
       payload: /procedure_cost_estimation
     - title: Prescription refills
       payload: /prescription_refills
-  - text: Hello {name}, I am ACEVA a healthcare assistant! How can I help you?
+  - text: Hello {name}, I am a healthcare assistant! How can I help you?
     buttons:
     - title: Make an appointment
       payload: /appointment
@@ -139,7 +139,7 @@ responses:
       payload: /procedure_cost_estimation
     - title: Prescription refills
       payload: /prescription_refills
-  - text: Hi {name}, I am ACEVA your healthcare assistant! How can I help you?
+  - text: Hi {name}, I am your healthcare assistant! How can I help you?
     buttons:
     - title: Make an appointment
       payload: /appointment
