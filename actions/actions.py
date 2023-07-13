@@ -74,6 +74,96 @@ class UpdateNameSlotAction(Action):
         value = tracker.latest_message.get("text").lower().replace("namehide ", "").replace(" my name is ", "").replace(" i am ", "").replace(" call me ", "").replace(" i am known as ", "").upper()
         return [SlotSet('name', value)]
 
+class UpdateSDOSlotAction(Action):
+    def name(self) -> Text:
+        return "action_tell_scheduledateone"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[Text]:
+        value = tracker.latest_message.get("text").replace("scheduleDateonee ", "")
+        return [SlotSet('scheduledateone', value)]
+
+class UpdateSDTSlotAction(Action):
+    def name(self) -> Text:
+        return "action_tell_scheduledatetwo"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[Text]:
+        value = tracker.latest_message.get("text").replace("scheduleDatetwoo ", "")
+        return [SlotSet('scheduledatetwo', value)]
+
+class UpdateDoctorSlotAction(Action):
+    def name(self) -> Text:
+        return "action_tell_doctor"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[Text]:
+        value = tracker.latest_message.get("text").lower().replace("doctorr ", "").replace(" doctor's name is ", "").replace(" doctor ", "").replace(" doctors name ", "").upper()
+        return [SlotSet('doctor', value)]
+
+class UpdateEnquirySlotAction(Action):
+    def name(self) -> Text:
+        return "action_tell_enquiry"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[Text]:
+        value = tracker.latest_message.get("text").replace("enquiryy ", "")
+        return [SlotSet('enquiry', value)]
+
+class UpdateSymptompSlotAction(Action):
+    def name(self) -> Text:
+        return "action_tell_symptomp"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[Text]:
+        value = tracker.latest_message.get("text").replace("symptompp ", "")
+        return [SlotSet('symptomp', value)]
+
+class UpdateEmailSlotAction(Action):
+    def name(self) -> Text:
+        return "action_tell_email"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[Text]:
+        value = tracker.latest_message.get("text").lower().replace("emaill ", "").replace(" my email is ", "").replace(" patient's email is ", "").replace(" email ", "").replace(" patients email is ", "")
+        return [SlotSet('email', value)]
+
+class UpdateICNumSlotAction(Action):
+    def name(self) -> Text:
+        return "action_tell_icnum"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[Text]:
+        value = tracker.latest_message.get("text").replace("icnumber ", "").replace(" ic number is ", "").replace(" ic number ", "")
+        return [SlotSet('icnum', value)]
+
+class UpdateDOBSlotAction(Action):
+    def name(self) -> Text:
+        return "action_tell_dob"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[Text]:
+        value = tracker.latest_message.get("text").replace("dateOfBirth ", "").replace(" date of birth is ", "").replace(" patient's date of birth is ", "").replace(" patient date of birth is ", "")
+        return [SlotSet('dob', value)]
+
+class UpdateFullNameSlotAction(Action):
+    def name(self) -> Text:
+        return "action_tell_full_name"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[Text]:
+        value = tracker.latest_message.get("text").lower().replace("fullname ", "").replace(" patient's name is ", "").replace(" patient name is ", "").upper()
+        return [SlotSet('full_name', value)]
+
 class GetDepartments(Action):
 
     def name(self) -> Text:
