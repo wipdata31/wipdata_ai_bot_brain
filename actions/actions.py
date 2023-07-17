@@ -144,6 +144,16 @@ class UpdateICNumSlotAction(Action):
         value = tracker.latest_message.get("text").replace("icnumber ", "").replace(" ic number is ", "").replace(" ic number ", "")
         return [SlotSet('icnum', value)]
 
+class UpdateICNumSlot1Action(Action):
+    def name(self) -> Text:
+        return "action_tell_icnum_appointment"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[Text]:
+        value = tracker.latest_message.get("text").replace("appoiic ", "").replace(" ic number is ", "").replace(" ic number ", "")
+        return [SlotSet('icnum', value)]
+
 class UpdateDOBSlotAction(Action):
     def name(self) -> Text:
         return "action_tell_dob"
