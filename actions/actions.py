@@ -169,16 +169,16 @@ class UpdateICNumSlotAction(Action):
         value = tracker.latest_message.get("text").replace("icnumber ", "").replace(" ic number is ", "").replace(" ic number ", "")
         nationality = tracker.slots.get("nationality")
         dob = tracker.slots.get("dob")
-        
-        if nationality == 'malaysian':
-            if validate_ic_with_dob(value.replace('-', '').replace(' ', ''), dob):
-                return [SlotSet('icnum', value)]
-            else:
-                print("incorrect IC.")
-                dispatcher.utter_message(text="Sorry, the IC number is incorrect. Please provide the valid IC number.")
-                return [SlotSet('icnum', None)] 
-        else:
-            return [SlotSet('icnum', value)]
+        return [SlotSet('icnum', value)]
+        # if nationality == 'malaysian':
+        #     if validate_ic_with_dob(value.replace('-', '').replace(' ', ''), dob):
+        #         return [SlotSet('icnum', value)]
+        #     else:
+        #         print("incorrect IC.")
+        #         dispatcher.utter_message(text="Sorry, the IC number is incorrect. Please provide the valid IC number.")
+        #         return [SlotSet('icnum', None)] 
+        # else:
+        #     return [SlotSet('icnum', value)]
 
 class UpdateICNumSlot1Action(Action):
     def name(self) -> Text:
@@ -190,16 +190,16 @@ class UpdateICNumSlot1Action(Action):
         nationality = tracker.slots.get("nationality")
         dob = tracker.slots.get("dob")
         value = tracker.latest_message.get("text").replace("appoiic ", "").replace(" ic number is ", "").replace(" ic number ", "")
-        
-        if nationality == 'malaysian':
-            if validate_ic_with_dob(value.replace('-', '').replace(' ', ''), dob):
-                return [SlotSet('icnum', value)]
-            else:
-                print("incorrect IC.")
-                dispatcher.utter_message(text="Sorry, the IC number is incorrect. Please provide the valid IC number.")
-                return [SlotSet('icnum', None)] 
-        else:
-            return [SlotSet('icnum', value)]
+        return [SlotSet('icnum', value)]
+        # if nationality == 'malaysian':
+        #     if validate_ic_with_dob(value.replace('-', '').replace(' ', ''), dob):
+        #         return [SlotSet('icnum', value)]
+        #     else:
+        #         print("incorrect IC.")
+        #         dispatcher.utter_message(text="Sorry, the IC number is incorrect. Please provide the valid IC number.")
+        #         return [SlotSet('icnum', None)] 
+        # else:
+        #     return [SlotSet('icnum', value)]
 
 def validate_date_format(date_str):
     try:
