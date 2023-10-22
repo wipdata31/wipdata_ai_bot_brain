@@ -1,0 +1,14 @@
+[
+  {
+    "name": "age",
+    "pattern": "\\d{1,2}"
+  },
+  {
+    "name": "mobile",
+    "pattern": "\\d{10,12}"
+  },
+  {
+    "name": "tell_name",
+    "pattern": "namehide"
+  }
+]

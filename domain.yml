@@ -1,50 +1,52 @@
 version: '3.1'
+
 intents:
-- affirm
-- appointment
-- bot_challenge
-- deny
-- faq_ask_about_wipdata
-- goodbye
-- greet
-- prescription_refills
-- procedure_cost_estimation
-- tell_age
-- tell_gender
-- tell_mobile
-- tell_name
-- tell_symptom
-- tell_department
-- tell_doctor
-- tell_schedule
-- main_menu
-# - tell_update_slot
-- tell_procedure
-- update_slot
-- average_total_charge
-- average_medicare_charge
-- cheaper_city
-- cheaper_provider
-- tell_state
-- tell_city
-- refill_request
-- human_handoff
-- finishing_conversation
+  - affirm
+  - appointment
+  - bot_challenge
+  - deny
+  - faq_ask_about_wipdata
+  - goodbye
+  - greet
+  - prescription_refills
+  - procedure_cost_estimation
+  - tell_age
+  - tell_gender
+  - tell_mobile
+  - tell_name
+  - tell_symptom
+  - tell_department
+  - tell_doctor
+  - tell_schedule
+  - main_menu
+  # - tell_update_slot
+  - tell_procedure
+  - update_slot
+  - average_total_charge
+  - average_medicare_charge
+  - cheaper_city
+  - cheaper_provider
+  - tell_state
+  - tell_city
+  - refill_request
+  - human_handoff
+  - finishing_conversation
+
 entities:
-- name
-- mobile
-- age
-- gender
-- department
-- doctor
-- date
-- time
-- symptom
-- slot
-- procedure
-- state
-- city
-- refill_items
+  - name
+  - mobile
+  - age
+  - gender
+  - department
+  - doctor
+  - date
+  - time
+  - symptom
+  - slot
+  - procedure
+  - state
+  - city
+  - refill_items
 
 slots:
   name:
@@ -238,52 +240,55 @@ responses:
   - custom:
       text: "Here is the query result."
       payload: "{}"
+      
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
 actions:
-- validate_appointment_form
-- action_utter_ask_slot
-- action_utter_procedure
-- action_utter_submit
-- utter_anything_else
-- utter_ask_age
-- utter_ask_gender
-- utter_ask_schedule
-- utter_ask_doctor
-- utter_ask_department
-- utter_ask_department_drop
-- utter_ask_name
-- utter_ask_symptom
-- utter_ask_update_slot
-- utter_goodbye
-- utter_greet
-- utter_please_rephrase
-- utter_slots_values
-- utter_drop_value
-- utter_report
-- utter_general_custom
-- utter_wrong_num_mobile
-- action_utter_state
-- action_utter_cheaper_city
-- action_utter_city
-- action_utter_cheaper_provider
-- action_utter_average_charge
-- action_utter_average_medicare
-- action_utter_department_drop
-- action_utter_department
-- action_utter_doctor
-- action_utter_schedule
-- action_check_for_refills
-- action_submit_refill_request
-- utter_smile
-- action_tell_name
+  - validate_appointment_form
+  - action_utter_ask_slot
+  - action_utter_procedure
+  - action_utter_submit
+  - utter_anything_else
+  - utter_ask_age
+  - utter_ask_gender
+  - utter_ask_schedule
+  - utter_ask_doctor
+  - utter_ask_department
+  - utter_ask_department_drop
+  - utter_ask_name
+  - utter_ask_symptom
+  - utter_ask_update_slot
+  - utter_goodbye
+  - utter_greet
+  - utter_please_rephrase
+  - utter_slots_values
+  - utter_drop_value
+  - utter_report
+  - utter_general_custom
+  - utter_wrong_num_mobile
+  - action_utter_state
+  - action_utter_cheaper_city
+  - action_utter_city
+  - action_utter_cheaper_provider
+  - action_utter_average_charge
+  - action_utter_average_medicare
+  - action_utter_department_drop
+  - action_utter_department
+  - action_utter_doctor
+  - action_utter_schedule
+  - action_check_for_refills
+  - action_submit_refill_request
+  - utter_smile
+  - action_tell_name
+
 forms:
   appointment_form:
     ignored_intents:
-    - tell_name
+      - tell_name
     required_slots:
-    - mobile
-    - age
-    - gender
-    - symptom
+      - mobile
+      - age
+      - gender
+      - symptom

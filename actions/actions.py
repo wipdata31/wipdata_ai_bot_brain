@@ -75,6 +75,16 @@ class UpdateNameSlotAction(Action):
         value = tracker.latest_message.get("text").lower().replace("namehide ", "").replace(" my name is ", "").replace(" i am ", "").replace(" call me ", "").replace(" i am known as ", "").upper()
         return [SlotSet('name', value)]
 
+class UpdateVisitPersonSlotAction(Action):
+    def name(self) -> Text:
+        return "action_tell_visit_person"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[Text]:
+        value = tracker.latest_message.get("text").replace("visitpersonn ", "")
+        return [SlotSet('visit_person', value)]
+
 class UpdateSDOSlotAction(Action):
     def name(self) -> Text:
         return "action_tell_scheduledateone"
@@ -143,8 +153,8 @@ class UpdateICNumSlotAction(Action):
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[Text]:
         value = tracker.latest_message.get("text").replace("icnumber ", "").replace(" ic number is ", "").replace(" ic number ", "")
-        nationality = tracker.slots.get("nationality")
-        dob = tracker.slots.get("dob")
+        # nationality = tracker.slots.get("nationality")
+        # dob = tracker.slots.get("dob")
         return [SlotSet('icnum', value)]
 
 class UpdateICNumSlot1Action(Action):
