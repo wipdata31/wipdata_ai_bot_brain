@@ -15,7 +15,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 import os
 import json
-from actions.func import create_appointment, get_procedures, get_states, get_cheapers, get_cities, get_avg, get_department, get_doctor, get_schedule, get_medicines, create_order
+from actions.func import make_reg, create_appointment, get_procedures, get_states, get_cheapers, get_cities, get_avg, get_department, get_doctor, get_schedule, get_medicines, create_order
 from datetime import datetime
 
 class AskForSlotAction(Action):
@@ -554,6 +554,30 @@ class SubmitRefillRequest(Action):
 
         if res.json()['_id']:
             dispatcher.utter_message(text="Order is successfully placed to your medicine provider. Your order id is " + res.json()['_id'] + ". Please store it for further use. You will get a notification when the order will be started to process. <br/><br/> Can I help you with anything else?")
+        else:
+            dispatcher.utter_message(text="Creating Order is unsuccessfull")
+        
+        print(res.json())
+
+class SubmitPTPReg(Action):
+
+    def name(self) -> Text:
+        return "action_submit_reg"
+
+    def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        full_name = tracker.slots.get("full_name")
+        mykad = tracker.slots.get("icnum")
+        date_from = tracker.slots.get("scheduledateone")
+        date_to = tracker.slots.get("scheduledatetwo")
+        visit_person = tracker.slots.get("visit_person")
+
+        res = make_reg(full_name, mykad, date_from, date_to, visit_person)
+
+        if res.json()['_id']:
+            dispatcher.utter_message(text="We're thrilled to inform you that your registration is now complete. You've been assigned a unique identification number " + res.json()['_id'] + " that will be your reference throughout your journey with us. This ID will be essential for any future interactions and transactions. Please keep this ID safe and easily accessible. Thank you for choosing us, and welcome aboard!")
         else:
             dispatcher.utter_message(text="Creating Order is unsuccessfull")
         
