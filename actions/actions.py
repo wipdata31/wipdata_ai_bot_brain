@@ -82,7 +82,9 @@ class UpdateVisitPersonSlotAction(Action):
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[Text]:
-        value = tracker.latest_message.get("text").replace("visitpersonn ", "")
+        print('i am on')
+        value = tracker.latest_message.get("text").lower().replace("visitpersonn ", "")
+        print(value)
         return [SlotSet('visit_person', value)]
 
 class UpdateSDOSlotAction(Action):
@@ -200,6 +202,7 @@ class UpdateFullNameSlotAction(Action):
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
     ) -> List[Text]:
+        print('i am on')
         value = tracker.latest_message.get("text").lower().replace("fullname ", "").replace(" patient's name is ", "").replace(" patient name is ", "").upper()
         return [SlotSet('full_name', value)]
 
