@@ -5,8 +5,8 @@ import json
 # baseUrl = 'http://localhost:5000'
 # baseUrl = 'https://aibotapis.azurewebsites.net'
 baseUrl = 'http://35.247.186.176:5000'
-# baseUrl2 = 'http://34.126.128.236:5000'
-baseUrl2 = 'http://localhost:5000'
+baseUrl2 = 'http://34.126.128.236:5000'
+# baseUrl2 = 'http://localhost:5000'
 
 def reg_status_check(mykad):
     request_url = f"{baseUrl2}/api/ptpscrape/checkRegStatus"
