@@ -15,7 +15,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 import os
 import json
-from actions.func import make_reg, create_appointment, get_procedures, get_states, get_cheapers, get_cities, get_avg, get_department, get_doctor, get_schedule, get_medicines, create_order
+from actions.func import reg_status_check, make_reg, create_appointment, get_procedures, get_states, get_cheapers, get_cities, get_avg, get_department, get_doctor, get_schedule, get_medicines, create_order
 from datetime import datetime
 
 class AskForSlotAction(Action):
@@ -582,3 +582,23 @@ class SubmitPTPReg(Action):
             dispatcher.utter_message(text="Creating Order is unsuccessfull")
         
         print(res.json())
+
+class RegCheck(Action):
+
+    def name(self) -> Text:
+        return "action_reg_status_check"
+
+    def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        mykad = tracker.slots.get("icnum")
+
+        res = reg_status_check(mykad)
+        print(res.json())
+
+        if res:
+            dispatcher.utter_message(text="Your user registration is currently in " + res.json() + " state.")
+        else:
+            dispatcher.utter_message(text="Status check unsuccessfull")
+        

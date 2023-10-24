@@ -5,7 +5,32 @@ import json
 # baseUrl = 'http://localhost:5000'
 # baseUrl = 'https://aibotapis.azurewebsites.net'
 baseUrl = 'http://35.247.186.176:5000'
-baseUrl2 = 'http://34.126.128.236:5000'
+# baseUrl2 = 'http://34.126.128.236:5000'
+baseUrl2 = 'http://localhost:5000'
+
+def reg_status_check(mykad):
+    request_url = f"{baseUrl2}/api/ptpscrape/checkRegStatus"
+
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    }
+
+    data = { 
+        "mykad": mykad
+        }
+
+    try:
+        response = requests.post(
+            request_url, headers=headers, data=json.dumps(data)
+        )
+        print(response)
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as err:
+        raise SystemExit(err)
+
+    print(f"Response status code: {response.status_code}")
+    return response
 
 def make_reg(full_name, mykad, date_from, date_to, visit_person):
     request_url = f"{baseUrl2}/api/ptpscrape/createPTPreg"
