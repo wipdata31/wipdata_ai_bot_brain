@@ -598,7 +598,7 @@ class RegCheck(Action):
         print(res.json())
 
         if res:
-            dispatcher.utter_message(text="Your user registration is currently in " + res.json() + " state.")
+            dispatcher.utter_message(text=res.json())
         else:
             dispatcher.utter_message(text="Status check unsuccessfull")
         
