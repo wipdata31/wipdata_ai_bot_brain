@@ -559,6 +559,30 @@ class SubmitRefillRequest(Action):
         
         print(res.json())
 
+class SubmitIsehatApt(Action):
+
+    def name(self) -> Text:
+        return "action_submit_apt_isehat"
+
+    def run(self, dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        full_name = tracker.slots.get("name")
+        mykad = tracker.slots.get("icnum")
+        date_from = tracker.slots.get("scheduledateone")
+        date_to = tracker.slots.get("phone")
+        visit_person = "isehat"
+
+        res = make_reg(full_name, mykad, date_from, date_to, visit_person)
+
+        if res.json()['_id']:
+            dispatcher.utter_message(text="Appointment is successfully submitted. Your appointment id is " + res.json()['_id'] + ". Please store it for further use.")
+        else:
+            dispatcher.utter_message(text="Creating appointment is unsuccessfull")
+        
+        print(res.json())
+
 class SubmitPTPReg(Action):
 
     def name(self) -> Text:
