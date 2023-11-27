@@ -569,7 +569,8 @@ class SubmitIsehatApt(Action):
         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         full_name = tracker.slots.get("name")
-        mykad = tracker.slots.get("icnum")
+        # mykad = tracker.slots.get("icnum")
+        mykad = tracker.slots.get("branch")
         date_from = tracker.slots.get("scheduledateone")
         date_to = tracker.slots.get("phone")
         visit_person = "isehat"
